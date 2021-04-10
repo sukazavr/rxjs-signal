@@ -50,6 +50,7 @@
     "prettier": "2.2.1",
     "ts-jest": "26.5.4",
     "ts-node": "^9.1.1",
+    "ts-snippet": "^5.0.2",
     "typescript": "4.2.4",
     "typescript-snapshots-plugin": "^1.7.0"
   },
@@ -57,5 +58,7 @@
   "importSorter": {
     "emptyLinesBetweenGroups": false
   },
-  "dependencies": {}
+  "dependencies": {
+    "rxjs": "^6.6.7"
+  }
 }
