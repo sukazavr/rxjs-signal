@@ -1,8 +1,8 @@
 {
   "name": "project-lib-typescript",
   "version": "0.0.0-dripip",
-  "repository": "git@github.com:jasonkuhrt/project-lib-typescript.git",
-  "author": "Jason Kuhrt",
+  "repository": "git@github.com:sukazavr/rxjs-signal.git",
+  "author": "Dmitrii Bykov",
   "license": "MIT",
   "files": [
     "dist",
@@ -57,7 +57,5 @@
   "importSorter": {
     "emptyLinesBetweenGroups": false
   },
-  "dependencies": {
-    "tslib": "^2.2.0"
-  }
+  "dependencies": {}
 }
