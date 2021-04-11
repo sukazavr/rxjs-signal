@@ -50,7 +50,7 @@ curried();
 
 Basically `signal` is a function with static props:
 - `$` shared Observable<P2>
-- `_` (payload: P1) => () => self()
+- `_` currying helper `(payload: P1) => () => signal(payload)`
 
 ```ts
 interface Signal<P1 = void, P2 = P1, R = void> {
