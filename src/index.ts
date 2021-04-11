@@ -20,7 +20,7 @@ export interface SignalWave {
  * (payload: P1) => () => self()
  *
  * Signal<P1 = void, P2 = P1, R = void>
- * P1 is input payload type, P2 is output payload type, R is return type.
+ * P1 is input payload type, P2 is output payload type, R is a return type.
  *
  * @function cs
  * @param {function(emit: function(payloadOutput: P2): void, payloadInput: P1): R} [modifier]
@@ -32,7 +32,7 @@ export interface SignalWave {
  *   import { ca } from 'rxjs-signal'
  *
  *   const save = ca<{ data: string }>()
- *   save.$.subscribe((x) => console.log(x))
+ *   save.$.subscribe(({ data }) => console.log(data))
  *   save({ data: 'hey' })
  *
  */
