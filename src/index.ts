@@ -63,7 +63,7 @@ export const signalWave$ = new Subject<SignalWave>()
  */
 export const signalDebug = (): Subscription =>
   signalWave$.subscribe(({ signal, payload }) => {
-    console.group('🔷', signal, '🔹')
+    console.group('🔷', signal.name, '🔹')
     console.dir(payload, { colors: true })
     console.groupEnd()
   })
