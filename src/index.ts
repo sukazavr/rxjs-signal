@@ -11,6 +11,7 @@ export type SignalModifier<P1, P2, R> = (emit: (payloadOutput: P2) => void, payl
 
 export interface SignalWave {
   signal: Signal<unknown>
+  modifier?: SignalModifier<unknown, unknown, unknown>
   payload: unknown
 }
 
@@ -42,7 +43,16 @@ export function cs<P1, R>(modifier: SignalModifier<P1, P1, R>): Signal<P1, P1, R
 export function cs<P1, P2, R>(modifier: SignalModifier<P1, P2, R>): Signal<P1, P2, R>
 export function cs<P1, P2, R>(modifier?: SignalModifier<P1, P2, R>): Signal<P1, P2, R> {
   const signal = (typeof modifier === 'function'
-    ? (payload) => modifier((payload) => signalWave$.next({ signal, payload }), payload as P1)
+    ? (payload) =>
+        modifier(
+          (payload) =>
+            signalWave$.next({
+              signal,
+              modifier: modifier as SignalModifier<unknown, unknown, unknown>,
+              payload,
+            }),
+          payload as P1
+        )
     : (payload) => signalWave$.next({ signal, payload })) as Signal<unknown>
   signal._ = (payload) => () => signal(payload)
   signal.$ = signalWave$.pipe(
@@ -62,8 +72,8 @@ export const signalWave$ = new Subject<SignalWave>()
  * @returns {Subscription}
  */
 export const signalDebug = (): Subscription =>
-  signalWave$.subscribe(({ signal, payload }) => {
-    console.group('🔷', signal.name, '🔹')
-    console.dir(payload, { colors: true })
+  signalWave$.subscribe((wave) => {
+    console.group(`🔷🔹 signal${'modifier' in wave ? ' with modifier' : ''}`)
+    console.dir(wave, { colors: true })
     console.groupEnd()
   })
