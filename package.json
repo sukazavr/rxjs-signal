@@ -59,6 +59,6 @@
     "emptyLinesBetweenGroups": false
   },
   "dependencies": {
-    "rxjs": "^6.6.7"
+    "rxjs": "^7.0.0"
   }
 }
