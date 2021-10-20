@@ -39,7 +39,7 @@
     "@prisma-labs/prettier-config": "0.1.0",
     "@types/jest": "26.0.22",
     "@typescript-eslint/eslint-plugin": "^4.21.0",
-    "@typescript-eslint/parser": "^4.21.0",
+    "@typescript-eslint/parser": "^5.0.0",
     "dripip": "0.10.0",
     "eslint": "^7.23.0",
     "eslint-config-prettier": "^8.1.0",
