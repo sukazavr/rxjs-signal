@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Compiler, expecter } from 'ts-snippet'
 import { cs } from '../src'
 import { take } from 'rxjs/operators'
@@ -8,7 +9,7 @@ describe('', () => {
   it('should receive value from cs().$', () => {
     expect.assertions(1)
     const signal = cs<number>()
-    const result = signal.$.pipe(take(1)).toPromise()
+    const result = lastValueFrom(signal.$.pipe(take(1)))
     signal(1)
     expect(result).resolves.toEqual(1)
   })
